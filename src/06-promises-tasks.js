@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable array-callback-return */
 /* ************************************************************************************************
  *                                                                                                *
  * Please read the following tutorial before implementing tasks:                                   *
@@ -28,8 +30,17 @@
  *      .catch((error) => console.log(error.message)) // 'Error: Wrong parameter is passed!
  *                                                    //  Ask her again.';
  */
-function willYouMarryMe(/* isPositiveAnswer */) {
-  throw new Error('Not implemented');
+function willYouMarryMe(isPositiveAnswer) {
+  return new Promise((res, rej) => {
+    if (arguments.length === 0 || typeof isPositiveAnswer !== 'boolean') {
+      rej(new Error('Wrong parameter is passed! Ask her again.'));
+    } else if (isPositiveAnswer) {
+      res('Hooray!!! She said "Yes"!');
+    } else {
+      res('Oh no, she said "No".');
+    }
+  });
+  // throw new Error('Not implemented');
 }
 
 
@@ -48,8 +59,17 @@ function willYouMarryMe(/* isPositiveAnswer */) {
  *    })
  *
  */
-function processAllPromises(/* array */) {
-  throw new Error('Not implemented');
+function processAllPromises(array) {
+  return new Promise((res) => {
+    const arr = [];
+    array.map((el) => {
+      el.then((arrgument) => {
+        arr.push(arrgument);
+      }).catch(() => []);
+      return res(arr);
+    });
+  });
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -71,8 +91,9 @@ function processAllPromises(/* array */) {
  *    })
  *
  */
-function getFastestPromise(/* array */) {
-  throw new Error('Not implemented');
+function getFastestPromise(array) {
+  return Promise.race(array);
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -93,6 +114,17 @@ function getFastestPromise(/* array */) {
  *
  */
 function chainPromises(/* array, action */) {
+  // const arrM = new Promise((res, rej) => {
+  //   const arr = [];
+  //   array.map((el) => {
+  //     el.then((arrgument) => {
+  //       arr.push(arrgument);
+  //     }).catch(() => []);
+  //     // const arr2 = arr.reduce((a, b) => action(a + b));
+  //     return res(arr.reduce((a, b) => action(a + b)));
+  //   });
+  // });
+  // return arrM;
   throw new Error('Not implemented');
 }
 
